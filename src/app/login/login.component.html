@@ -56,11 +56,11 @@
                     <br/>
           <b >Social Login</b>
           <br/>
-          <button mat-icon-button color="primary">
+          <button (click)="socialLogin('facebook')" mat-icon-button color="primary">
               <span class="fa fa-facebook"></span>
           </button>
           &nbsp;&nbsp;&nbsp;
-          <button mat-icon-button color="primary">
+          <button (click)="socialLogin('google')" mat-icon-button color="primary">
               <span class="fa fa-google"></span>
           </button>
         <br/>

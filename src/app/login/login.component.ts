@@ -3,6 +3,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FormControl, FormGroupDirective,FormBuilder,FormGroup, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
+import{ SocialLoginService } from '../social-login.service'
+
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -21,7 +23,7 @@ export interface DialogData {
 })
 export class LoginComponent{
   socialInfo:any = "Amit";
-  constructor(private _formBuilder: FormBuilder,
+  constructor(private socialAuth: SocialLoginService , private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<LoginComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
     onNoClick(): void {
@@ -35,5 +37,12 @@ export class LoginComponent{
       Validators.required,
       Validators.pattern('^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$')
     ]);
+
+    socialLogin(type){
+      if(type=='facebook')
+      this.socialAuth.signInWithFB();
+      if(type=='google')
+      this.socialAuth.signInWithGoogle();
+    }
 
 }

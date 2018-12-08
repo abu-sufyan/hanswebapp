@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { LoginComponent } from '../login/login.component'
+declare var Razorpay: any; 
 export interface DialogData {
   animal: string;
   name: string;
@@ -30,5 +31,6 @@ export class HomeComponent  {
       this.socialInfo = result;
     });
   }
+
 
 }
