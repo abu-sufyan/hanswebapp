@@ -1,0 +1,8 @@
+<h1 class="text-center"> Under Progress </h1>
+<a mat-raised-button color="warn" routerLink="/register"> Check register </a>
+<button mat-raised-button (click)="openDialog()">Check Login</button>
+<li *ngIf="socialInfo">
+  Social Info: <i>{{socialInfo}}</i>
+</li>
+<br/>
+<button mat-raised-button color="accent">Check Payment Integration</button>

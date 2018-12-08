@@ -1,0 +1,266 @@
+<div class="bg">
+  <div class="container text-right">
+    <span style="color:brown">matches@hansmatrimony.com &nbsp;&nbsp;Contact : 123456789 | 12345678</span>
+  </div>
+  <div style="background-color:rgba(126, 42, 42,0.6)" >
+    <nav style="background-color:transparent" class="navbar container navbar-light ">
+        <a style="opacity:1!important;" class="navbar-brand" href="#">
+        <b>Hans Matrimony</b>
+        </a>
+      </nav>
+  </div>
+    <div class="container">
+      <h1 class="headline text-center">Welcome To Hans Matrimony</h1>
+      <h3 class="text-center">Let's start your partner search with this sign up</h3>
+        <mat-horizontal-stepper labelPosition="bottom" #stepper>
+          <mat-step [stepControl]="firstFormGroup">
+            <div class="row">
+              <div class="col-md-2 text-center info">
+                <mat-card>
+                  <mat-card-content>
+                    <h3>Why Us?</h3>
+                    <i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i>
+                    <p>Offline Verification of Profile</p>
+                    <i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i>
+                    <p>Find match on Whatsapp</p>
+                    <i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i>
+                    <p>Zero Fake Profile</p>
+                    <i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i>
+                    <p>Offline Verification at temples</p>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="col-md-10">
+                <mat-card class="example-card">
+                  <mat-card-content>
+                      <div class="row">
+                          <div class="col heading">Account Details</div>
+                          <div class="col ml-auto text-right">Mandatory<sup>*</sup></div>
+                      </div>
+                    <hr/>
+                    <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="full-width">
+                              <input matInput placeholder="Email" [formControl]="emailFormControl"
+                                     [errorStateMatcher]="matcher" required>
+                              <mat-hint>We do not spam</mat-hint>
+                              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                Please enter a valid email address
+                              </mat-error>
+                              <mat-error *ngIf="emailFormControl.hasError('required')">
+                                Email is <strong>required</strong>
+                              </mat-error>
+                          </mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                          <mat-form-field class="full-width">
+                              <input type="password" matInput placeholder="Password" [formControl]="passFormControl"
+                                     [errorStateMatcher]="matcher" required>
+                              <mat-hint>Do not share it with anyone</mat-hint>
+                              <mat-error *ngIf="passFormControl.hasError('pattern') && !passFormControl.hasError('required')">
+                                  Password must be at least 8 characters, and must include upper case,lower case and numeric digit.
+                              </mat-error>
+                              <mat-error *ngIf="passFormControl.hasError('required')">
+                                Password is <strong>required</strong>
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-title">Create Profile For <sup>*</sup></div>
+                    <ng-container *ngFor="let profile of profileForOpt">
+                        <button (click)="setProfileFor(profile)" [ngClass]="{'button-active':profile == profileFor,'button-inactive':profile != ProfileFor}" mat-stroked-button>{{profile}}</button>
+                    </ng-container>
+                    <div class="form-title">
+                      <b>Gender&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                      <ng-container *ngFor="let gender of genderOpt">
+                          <button  (click)="setGender(gender)" mat-icon-button>
+                              <mat-icon *ngIf="genderS == gender" color="warn" aria-label="Male">flight_land</mat-icon>
+                              <mat-icon *ngIf="genderS != gender" aria-label="Female">flight_takeoff</mat-icon>
+                          </button>
+                          {{gender}}
+                      </ng-container>
+                    </div>
+                    <div class="row ">
+                      <div class="col-md-7">
+                          <mat-form-field class="full-width">
+                              <input matInput placeholder="Full Name" required>
+                          </mat-form-field>
+                      </div>
+                      <div class="col-md-4">
+                          <mat-form-field class="full-width">
+                              <input matInput [(ngModel)]="startTime" [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Choose a date" required> 
+                              <mat-datepicker-toggle matSuffix [for]="picker">
+                                  <mat-icon style="font-size:150%;font-weight:bolder!important" matDatepickerToggleIcon>calendar_today</mat-icon>
+                              </mat-datepicker-toggle>
+                              <mat-datepicker touchUi #picker></mat-datepicker>
+                              <mat-hint>MM/DD/YYYY</mat-hint>
+                            </mat-form-field>
+                      </div>
+                    </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <mat-form-field class="full-width">
+                                  <span matPrefix>+91 &nbsp;</span>
+                                  <input type="tel" matInput placeholder="Mobile No." required>
+                                </mat-form-field>
+                          </div>
+                      </div>
+                      <button mat-flat-button color="accent"><b>Register Me </b></button>
+                      <button mat-flat-button color="warn"><b>Reset</b></button>
+                      <br/><br/>
+                      <p class="subtitle">
+                          By clicking on <span class="highlight">"Register Me"</span>, you confirm that <br/>you accept the <a href="#"><span class="highlight">Terms of Use</span></a> and <a href="#"><span class="highlight">Privacy Policy</span></a>
+                        </p>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" optional>
+            <div class="row">
+              <div class="col-md-2 text-center info">
+                <mat-card>
+                  <mat-card-content>
+                    <h3>Why Us?</h3>
+                    <i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i>
+                    <p>Offline Verification of Profile</p>
+                    <i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i>
+                    <p>Find match on Whatsapp</p>
+                    <i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i>
+                    <p>Zero Fake Profile</p>
+                    <i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i>
+                    <p>Offline Verification at temples</p>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="col-md-10">
+                <mat-card class="example-card">
+                  <mat-card-content>
+                      <div class="row">
+                          <div class="col heading">Personal Details</div>
+                          <div class="col ml-auto text-right">Mandatory<sup>*</sup></div>
+                      </div>
+                    <hr/>
+                    <div class="row">
+                      <div class="col-md-6">
+                          <mat-form-field class="full-width">
+                              <input matInput placeholder="Email" [formControl]="emailFormControl"
+                                     [errorStateMatcher]="matcher" required>
+                              <mat-hint>We do not spam</mat-hint>
+                              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                Please enter a valid email address
+                              </mat-error>
+                              <mat-error *ngIf="emailFormControl.hasError('required')">
+                                Email is <strong>required</strong>
+                              </mat-error>
+                          </mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                          <mat-form-field class="full-width">
+                              <input type="password" matInput placeholder="Password" [formControl]="passFormControl"
+                                     [errorStateMatcher]="matcher" required>
+                              <mat-hint>Do not share it with anyone</mat-hint>
+                              <mat-error *ngIf="passFormControl.hasError('pattern') && !passFormControl.hasError('required')">
+                                  Password must be at least 8 characters, and must include upper case,lower case and numeric digit.
+                              </mat-error>
+                              <mat-error *ngIf="passFormControl.hasError('required')">
+                                Password is <strong>required</strong>
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-title">Create Profile For <sup>*</sup></div>
+                    <ng-container *ngFor="let profile of profileForOpt">
+                        <button (click)="setProfileFor(profile)" [ngClass]="{'button-active':profile == profileFor,'button-inactive':profile != ProfileFor}" mat-stroked-button>{{profile}}</button>
+                    </ng-container>
+                    <div class="form-title">
+                      <b>Gender&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                      <ng-container *ngFor="let gender of genderOpt">
+                          <button  (click)="setGender(gender)" mat-icon-button>
+                              <mat-icon *ngIf="genderS == gender" color="warn" aria-label="Male">flight_land</mat-icon>
+                              <mat-icon *ngIf="genderS != gender" aria-label="Female">flight_takeoff</mat-icon>
+                          </button>
+                          {{gender}}
+                      </ng-container>
+                    </div>
+                    <div class="row ">
+                      <div class="col-md-7">
+                          <mat-form-field class="full-width">
+                              <input matInput placeholder="Full Name" required>
+                          </mat-form-field>
+                      </div>
+                      <div class="col-md-4">
+                          <!-- <mat-form-field class="full-width">
+                              <input matInput [(ngModel)]="startTime" [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Choose a date" required> 
+                              <mat-datepicker-toggle matSuffix [for]="picker">
+                                  <mat-icon style="font-size:150%;font-weight:bolder!important" matDatepickerToggleIcon>calendar_today</mat-icon>
+                              </mat-datepicker-toggle>
+                              <mat-datepicker touchUi #picker></mat-datepicker>
+                              <mat-hint>MM/DD/YYYY</mat-hint>
+                            </mat-form-field> -->
+                      </div>
+                    </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <mat-form-field class="full-width">
+                                  <span matPrefix>+91 &nbsp;</span>
+                                  <input type="tel" matInput placeholder="Mobile No." required>
+                                </mat-form-field>
+                          </div>
+                      </div>
+                      <button mat-flat-button color="accent"><b>Register Me </b></button>
+                      <button mat-flat-button color="warn"><b>Reset</b></button>
+                      <br/><br/>
+                      <p class="subtitle">
+                          By clicking on <span class="highlight">"Register Me"</span>, you confirm that <br/>you accept the <a href="#"><span class="highlight">Terms of Use</span></a> and <a href="#"><span class="highlight">Privacy Policy</span></a>
+                        </p>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            You are now done.
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </div>
+    </div>
+      <footer style="background-color: rgb(92, 38, 38); color:white;" class="footer text-center">
+          <div class="container">
+            <br/>
+            <div class="row">
+              <div class="col-md-4">
+                <br/>
+                <h4>Contact</h4>
+              <p>
+                matched@hansmatrimony.com<br/>
+                +91-xxx-xxx-xxxx<br/>
+                +91-xxx-xxx-xxxx
+              </p>              </div>
+              <div class="col-md-4">
+                  <br/>
+                  <h4>Follow Us</h4>
+                  <a href="#" class="fa fa-facebook"></a>
+<a href="#" class="fa fa-twitter"></a>
+<a href="#" class="fa fa-google"></a>
+<a href="#" class="fa fa-youtube"></a>
+<a href="#" class="fa fa-instagram"></a>
+                </div>
+                <div class="col-md-4">
+                    <br/>
+                    <h4>Policy Info</h4>
+                    <p>
+                      Privacy Policy<br/>
+                      Terms of Use<br/>
+                      Cancellation & return<br/>
+                      FAQ<br/>
+                    </p>    
+                  </div>
+            </div>
+          </div>
+        </footer>    
