@@ -12,7 +12,7 @@ export interface DialogData {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent  {
-
+  toggled:boolean;
   animal: string = "zebra";
   name: string = "amit";
   socialInfo:string;
@@ -31,6 +31,9 @@ export class HomeComponent  {
       this.socialInfo = result;
     });
   }
-
+  toggleMenu()
+  {
+    this.toggled = !this.toggled;
+  }
 
 }
